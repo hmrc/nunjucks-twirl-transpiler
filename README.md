@@ -1,54 +1,37 @@
-# Nunjucks
+# !! Experiment, not fit for use in its current state !!
 
-  [![NPM Version][npm-image]][npm-url]
-  [![NPM Downloads][downloads-image]][downloads-url]
-  [![Linux Build][travis-image]][travis-url]
-  [![Windows Build][appveyor-image]][appveyor-url]
-  [![Test Codecov][codecov-image]][codecov-url]
+## Nunjucks-Twirl-Transpiler
 
-[Nunjucks](https://mozilla.github.io/nunjucks/) is a full featured
-templating engine for javascript. It is heavily inspired by
-[jinja2](http://jinja.pocoo.org/). View the docs
-[here](https://mozilla.github.io/nunjucks/).
+### Problem
 
-## Installation
+GDS (GOV.UK) provide components in Nunjucks but in HMRC we tend to use Twirl.
 
-`npm install nunjucks`
+### Proposed solution
 
-(View the [CHANGELOG](https://github.com/mozilla/nunjucks/releases))
+Convert GDS's Nunjucks components into Twirl components
 
-## Documentation
+## Spike (experiment)
 
-See [here](https://mozilla.github.io/nunjucks/).
+We approached this as an experiment, not expecting to produce production-ready maintainable code but looking for a
+quick answer to whether or not this was possible.  One shortcut we took was to start with a fork of Nunjucks so we have
+access to all the inner workings - that means a lot of this project is not actually relevant to the work we've done.
 
-## Browser Support
+### Outcome
 
-Supported in all modern browsers. For IE8 support, use [es5-shim](https://github.com/es-shims/es5-shim).
+It looks possible, it is likely to be particularly time consuming to build and maintain this transpiler.
 
-## Tests
+### Usage
 
-Run the tests with `npm test`.
+1. Clone the project
+2. `npm install`
+3. Try it out with some of the built-in examples:
 
-Watch `master` branch's [tests running in the browser](https://mozilla.github.io/nunjucks/files/tests/browser/).
+`node transpiler.js components-to-transpile/backlink.njk`
+`node transpiler.js components-to-transpile/hint.njk`
+`node transpiler.js components-to-transpile/panel.njk`
 
-## Mailing List
+4. Try it out with some other nunjucks templates:
 
-Join our mailing list and get help with and issues you have:
-https://groups.google.com/forum/?fromgroups#!forum/nunjucks
+Copy the contents of a file for example [GOV.UK's Panel](https://github.com/alphagov/govuk-frontend/blob/8537275a6f26a3564acfb0c40883150c8973226e/src/govuk/components/panel/template.njk)
+Run `pbpaste | node transpiler.js` and see the output or `pbpaste | node transpiler.js > ../panel.scala.html` 
 
-## Want to help?
-
-Contributions are always welcome! Before you submit an issue or pull request, please read our [contribution guidelines](CONTRIBUTING.md).
-
-[Contributors](https://github.com/mozilla/nunjucks/graphs/contributors)
-
-[npm-image]: https://img.shields.io/npm/v/nunjucks.svg
-[npm-url]: https://npmjs.org/package/nunjucks
-[downloads-image]: https://img.shields.io/npm/dm/nunjucks.svg
-[downloads-url]: https://npmjs.org/package/nunjucks
-[travis-image]: https://img.shields.io/travis/mozilla/nunjucks/master.svg?label=linux
-[travis-url]: https://travis-ci.org/mozilla/nunjucks
-[appveyor-image]: https://img.shields.io/appveyor/ci/fdintino/nunjucks/master.svg?label=windows
-[appveyor-url]: https://ci.appveyor.com/project/fdintino/nunjucks
-[codecov-image]: https://img.shields.io/codecov/c/gh/mozilla/nunjucks.svg
-[codecov-url]: https://codecov.io/gh/mozilla/nunjucks/branch/master
